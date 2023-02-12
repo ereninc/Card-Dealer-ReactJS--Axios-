@@ -3,6 +3,7 @@ Card data fetched with that api: <br>
 https://deckofcardsapi.com/api/deck/new/shuffle/ <br>
 First I did a axios call using that URL to generate deck_id, <br>
 Then I used that deck_id for getting card data. Each button click is a request via axios. <br>
+That call's respond is a random card data. <br>
 https://deckofcardsapi.com/api/deck/${deck_id}/draw/ <br>
 <br>
 <br>
