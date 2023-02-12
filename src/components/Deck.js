@@ -17,6 +17,14 @@ export default function Deck() {
     getDeck();
   }, [setDeck]);
 
+  function animateCard() {
+    let angle = Math.random() * 90 - 45;
+    let xPos = Math.random() * 40 - 20;
+    let yPos = Math.random() * 40 - 20;
+    let transform = `translate(${xPos}px, ${yPos}px) rotate(${angle}deg)`;
+    return transform;
+  }
+
   const getCard = async () => {
     //make request using deck id
     //set state using new card info from api
@@ -28,12 +36,14 @@ export default function Deck() {
         throw new Error("No card remaining!");
       }
       let card = cardRes.data.cards[0];
+      card.transform = animateCard();
       setDrawn((d) => [
         ...d,
         {
           id: card.code,
           image: card.image,
           name: `${card.value} of ${card.suit}`,
+          transform: card.transform,
         },
       ]);
     } catch (err) {
@@ -55,7 +65,12 @@ export default function Deck() {
         {
           // map over drawn cards and make a card for each one
           drawn.map((c) => (
-            <Card key={c.id} name={c.name} image={c.image} />
+            <Card
+              key={c.id}
+              name={c.name}
+              image={c.image}
+              transform={c.transform}
+            />
           ))
         }
       </div>
