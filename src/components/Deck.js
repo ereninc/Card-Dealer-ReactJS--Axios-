@@ -53,8 +53,10 @@ export default function Deck() {
 
   return (
     <div>
-      <h1>Card Dealer</h1>
+      <h1 className="Deck-title">⩤ Card Dealer ⩥</h1>
+      <h2 className="Deck-title subtitle">⩤ Pick a Card! ⩥</h2>
       <button
+        className="Deck-btn Get-Card"
         onClick={() => {
           getCard();
         }}
